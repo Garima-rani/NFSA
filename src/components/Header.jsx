@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
 import './Header.css';
 
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleOfficialLogin = () => {
+    navigate('/official-login'); // Navigate to the official login page
   };
 
   return (
@@ -29,8 +35,12 @@ function Header() {
           </button>
           {dropdownOpen && (
             <div className="dropdown-menu">
-              <button className="dropdown-item">Public Login</button>
-              <button className="dropdown-item">Official Login</button>
+              <button className="dropdown-item" onClick={handleOfficialLogin}>
+                Official Login
+              </button>
+              <button className="dropdown-item">
+                Public Login
+              </button>
             </div>
           )}
         </div>
@@ -41,3 +51,102 @@ function Header() {
 }
 
 export default Header;
+// package com.spring.Security;
+// import org.springframework.context.annotation.Bean;
+//
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.web.SecurityFilterChain;
+//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+//
+//@Configuration
+//@EnableWebSecurity
+//public class SecurityConfig {
+//
+//    private final UserDetailsService userDetailsService;
+//    private final JwtRequestFilter jwtRequestFilter;
+//
+//    public SecurityConfig(UserDetailsService userDetailsService, JwtRequestFilter jwtRequestFilter) {
+//        this.userDetailsService = userDetailsService;
+//        this.jwtRequestFilter = jwtRequestFilter;
+//    }
+//
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http.csrf().disable()
+//                .authorizeRequests()
+//                .requestMatchers("/authenticate", "/register").permitAll()
+//                .requestMatchers("/admin/**").hasRole("ADMIN")
+//                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
+//                .anyRequest().authenticated()
+//                .and()
+//                .sessionManagement().disable()
+//                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+//
+//        return http.build();
+//    }
+//
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+//        return authenticationConfiguration.getAuthenticationManager();
+//    }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//}
+////@Configuration
+////@EnableWebSecurity
+////public class SecurityConfig {
+////
+////    @Bean
+////    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+////        http.csrf().disable()
+////                .authorizeRequests()
+////                .requestMatchers("/api/auth/register").permitAll()
+////                .requestMatchers("/api/auth/login").permitAll()
+////                .anyRequest().authenticated();
+////        return http.build();
+////    }
+////
+////    @Bean
+////    public PasswordEncoder passwordEncoder() {
+////        return new BCryptPasswordEncoder();
+////    }
+////}import org.springframework.context.annotation.Bean;
+// import org.springframework.context.annotation.Configuration;
+// import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+// import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+// import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+// import org.springframework.security.crypto.password.PasswordEncoder;
+// import org.springframework.security.web.SecurityFilterChain;
+
+// @Configuration
+// @EnableWebSecurity
+// public class SecurityConfig {
+
+//     @Bean
+//     public PasswordEncoder passwordEncoder() {
+//         return new BCryptPasswordEncoder();
+//     }
+
+//     @Bean
+//     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//         http
+//             .authorizeRequests(authorizeRequests ->
+//                 authorizeRequests
+//                     .anyRequest().permitAll()
+//             )
+//             .csrf(csrf -> csrf.disable());
+
+//         return http.build();
+//     }
+// }
