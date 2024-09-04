@@ -8,6 +8,10 @@ import AadharOtpLogin from './AadharOtpLogin'; // Import the AadharOtpLogin comp
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate
+  const [modalOpen , setModalOpen] = useState(false) ;
+  const [showAadharOtp , setShowAadharOtp] = useState(false) ; // Initialize showAadharOtp state
+  const handleOpen = ()=>{ setModalOpen(true) ;}
+  const handleClose = ()=>{ setModalOpen(false) ;}
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
