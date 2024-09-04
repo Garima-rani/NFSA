@@ -8,6 +8,7 @@ import OfficialLogin from './components/OfficialLogin.jsx';
 import MasterData from './components/MasterData.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx'; // Ensure this path is correct
 import HeaderNavLayout from './layout/HeaderNavLayout.jsx';
+import AadharOtpLogin from './components/AadharOtpLogin.jsx';
 import axios from 'axios';
 import NewOfficialRegister from './forms/NewOfficialRegister.jsx';
 
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/master/data" element={<ProtectedRoute > <MasterData /></ProtectedRoute>} />
         <Route path="/new/official/registration" element={<NewOfficialRegister />} />
 
+        <Route path="/aadhar-otp-login" element={<AadharOtpLogin />} />
         </Route>
         </Routes>
        
