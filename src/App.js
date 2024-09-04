@@ -9,18 +9,19 @@ import MasterData from './components/MasterData.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx'; // Ensure this path is correct
 import HeaderNavLayout from './layout/HeaderNavLayout.jsx';
 import axios from 'axios';
+import NewOfficialRegister from './forms/NewOfficialRegister.jsx';
 
 const App = () => {
   const [stats, setStats] = useState([]) ;
   const fetchStats = async()=>{
-    const response = await axios.get("http://localhost:8080/api/stats")
+    const response = await axios.get("http://localhost:8080/api/stats") 
     return response.data
   }
-  useEffect(async() => {
+  // useEffect(async() => {
    
-    const fetchedStats = await fetchStats()
-    setStats(fetchedStats);
-  }, []);
+  //   // const fetchedStats = await fetchStats()
+  //   // setStats(fetchedStats);
+  // }, []);
 
   return (
     <div>
@@ -39,6 +40,8 @@ const App = () => {
         />
         <Route path="/official-login" element={<OfficialLogin />} />
         <Route path="/master/data" element={<ProtectedRoute > <MasterData /></ProtectedRoute>} />
+        <Route path="/new/official/registration" element={<NewOfficialRegister />} />
+
         </Route>
         </Routes>
        

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Box from '@mui/material/Box';
+
 
 const OfficialLogin = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -35,9 +37,23 @@ const OfficialLogin = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
-        <h2 className="text-2xl font-semibold text-center text-gray-800">Official Login</h2>
+    <Box
+    sx={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      
+      bgcolor: 'gray',
+      boxShadow: 24,
+      // borderRadius : "20px" , 
+      
+    }}
+  >
+      <div className="w-full  bg-gray-200 rounded-lg shadow-lg p-4 grid lg:grid-cols-[60%_40%] gap-8 ">
+        <div>
+
+        <h2 className="text-2xl font-semibold text-center text-gray-800 rounded-lg h-[70px] flex justify-center items-center text-white bg-blue-400 ">PDS Login</h2>
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4" role="alert">
             <strong className="font-bold">Error:</strong>
@@ -63,13 +79,23 @@ const OfficialLogin = () => {
           />
           <button
             onClick={handleLogin}
-            className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 mt-6 transition duration-300"
+            className="w-full bg-green-400 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-500 mt-6 transition duration-300"
           >
             Login
           </button>
         </div>
+
+       
+        </div>
+        <div className='flex flex-col gap-4 justify-center'>
+          <NavLink>Back To Home</NavLink>
+          <NavLink>Forgot UserID</NavLink>
+          <NavLink>Forgot Password</NavLink>
+          <NavLink to="/new/official/registration">New User Registration</NavLink>
+
+        </div>
       </div>
-    </div>
+    </Box>
   );
 };
 

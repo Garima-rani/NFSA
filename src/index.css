@@ -1,4 +1,15 @@
-/* Existing styles */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg-color: whitesmoke;
+  --cardbg-color : white ;
+  --cardborder-color : rgb(130, 130, 255) ; 
+  --border-color : gray ; 
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,7 +24,75 @@ code {
     monospace;
 }
 
-/* Add Tailwind CSS directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+card{
+  background-color: var(--cardbg-color);
+  padding : 15px  ; 
+  padding-bottom: 20px;
+  border-radius: 5px;
+  border-top: 3px solid var(--cardborder-color) ;
+}
+
+.card h2{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input[type="checkbox"]:disabled{
+  cursor: not-allowed;
+  width: fit-content;
+}
+
+tr,td,th{
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+button[type="button"]{
+  padding: 5px 15px ;
+  border-radius: 4px;
+  background-color: lightseagreen;
+}
+
+button[type="submit"]{
+  padding: 5px 15px ;
+  border-radius: 4px;
+  background-color: blue;
+  color: white;
+}
+
+.card{
+  background-color: var(--cardbg-color);
+  padding : 15px  ; 
+  padding-bottom: 20px;
+  border-radius: 5px;
+  border-top: 3px solid var(--cardborder-color) ;
+}
+
+.card h2{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+input[type="checkbox"]:disabled{
+  cursor: not-allowed;
+  width: fit-content;
+}
+
+tr,td,th{
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+button[type="button"]{
+  padding: 5px 15px ;
+  border-radius: 4px;
+  background-color: lightseagreen;
+}
+
+button[type="submit"]{
+  padding: 5px 15px ;
+  border-radius: 4px;
+  background-color: blue;
+  color: white;
+}
